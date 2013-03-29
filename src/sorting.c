@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	clock_t begin_p, end_p, begin_alg, end_alg;
 	double p_time_spent, a_time_spent;
 
-	int n, i, alg, po = 0;
+	int n, i, alg, po = 0, s = 0;
 
 	if (argc == 1)
 	{
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 		printf("Print the vectors (1)-Yes, (0)-No? Default: (0).");
 		scanf("%d", &po);
 
-	} else if (argc == 4)
+	} else if (argc == 5)
 	{
 
 		if (sscanf(argv[1], "%d", &n) != 1)
@@ -52,9 +52,15 @@ int main(int argc, char **argv)
 			printf("Print option scanf failed.\n");
 			exit(-1);
 		}
+
+		if (sscanf(argv[4], "%d", &s) != 1)
+		{
+			printf("sleep time scanf failed.\n");
+			exit(-1);
+		}
 	}else
 	{
-		printf("Usage sorting <vector size> <algorithm> <print> \n");
+		printf("Usage sorting <vector size> <algorithm> <print> <sleep time> \n");
 		exit(-1);
 	}
 
@@ -66,8 +72,12 @@ int main(int argc, char **argv)
 	srand(time(NULL ));
 	for (i = 0; i < n; i++)
 	{
-		v[i] = (int) rand() % 100;
+		v[i] = (int) rand() % 1000;
 	}
+
+	printf("Going to sleep\n");
+ 	sleep(s);
+	printf("I am awake\n");
 
 	if (po)
 	{
