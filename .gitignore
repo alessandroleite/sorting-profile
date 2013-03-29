@@ -1,5 +1,7 @@
 # Object files
 *.o
+*.s
+*~
 
 # Libraries
 *.lib
@@ -15,3 +17,4 @@
 *.exe
 *.out
 *.app
+bin/sorting
